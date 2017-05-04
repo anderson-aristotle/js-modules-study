@@ -18,4 +18,4 @@ example.async(false, (error, data) => {
 
 example.promise(false)
   .then(success)
-  .catch(failure);
+  .catch(failure)
