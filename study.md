@@ -5,11 +5,6 @@ You're already familiar with modular code from Ruby and from using the
 browser-template, where your application code was split into many files, which
 were all executed as part of one process.
 
-## Objectives
-- Explain the advantages of having modular code.
-- Write an inline module.
-- Write a module that is exported to another file.
-
 ## Interfaces
 
 Modules let us choose what we expose. The module patterns we will explore all

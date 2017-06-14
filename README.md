@@ -12,7 +12,9 @@ By the end of this, developers should be able to:
 
 -   Read and evaluate code that uses IIFEs.
 -   Draw inferences about how Node isolates modules.
--   Organize code into modules.
+-   Explain the advantages of having modular code.
+-   Write an inline module.
+-   Write a module that is exported to another file.
 
 ## Instructions
 
