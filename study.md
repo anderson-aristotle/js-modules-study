@@ -5,11 +5,6 @@ You're already familiar with modular code from Ruby and from using the
 browser-template, where your application code was split into many files, which
 were all executed as part of one process.
 
-## Objectives
-- Explain the advantages of having modular code.
-- Write an inline module.
-- Write a module that is exported to another file.
-
 ## Interfaces
 
 Modules let us choose what we expose. The module patterns we will explore all
@@ -143,14 +138,10 @@ const myModule = (function(arg, transform) {
 ### Checkpoint 2
 
 Since we named our function `incrementX`, we know that the `incrementX` being
-called where we define `countFromZero` is the same function, right? We can replace
-`incrementX` with the actual function expression, then, and it'll be the same,
-won't it?
+called where we define countFromZero is the same function, right? We can replace the invocation of incrementX with the actual function expression and it'll be the same, won't it?
 
-1.  Copy the declaration of `incrementX` in [`lib/inline.js`](lib/inline.js),
-    with the parens that surround it.
-1.  Substitute the declaration you copied for `incrementX` in the line where we
-    declare and define the variable `countFromZero`.
+1.  Copy the function expression that is being assigned to `incrementX`, including the surrounding parens you just added.
+1.  Now where we declare `countFromZero`, instead of invoking `incrementX`, paste in the function expression from the last step.
 1.  Remove the declaration of `incrementX` from the lines above our declaration
     of `countFromZero`.  Your module should now look like the `myModule` above.
 1.  Run the script again and observe any difference in the result.
