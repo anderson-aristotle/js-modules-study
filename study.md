@@ -40,23 +40,23 @@ should get you warmed-up for completing the labs that follow.
 ### Constructor Pattern
 
 ```js
-function ModuleFactory(args) {
-  let variable = someTransformationOf(args);
+function ModuleFactory (args) {
+  let variable = someTransformationOf(args)
 
   return {
-    property : value,
-    getterMethod : function() {
+    property: value,
+    getterMethod: function () {
       // has access to `variable` above
-      return variable;
+      return variable
     },
-    setterMethod : function(value) {
+    setterMethod: function (value) {
       // has access to `variable` above
-      variable = value;
+      variable = value
     }
-  };
+  }
 }
 
-let myModule = ModuleFactory(someArgs);
+const myModule = ModuleFactory(someArgs)
 // How would you use the getter and setter methods? What would they do?
 ```
 
@@ -66,18 +66,18 @@ let myModule = ModuleFactory(someArgs);
 A undressed, unembellished, inline module:
 
 ```js
-let myModule = (function(arg, transform) {
+const myModule = (function (arg, transform) {
   // secret internals
-  let value = arg;
+  let value = arg
 
   // exports
-  return function() {
+  return function () {
     // has access to secret internals!
-    value = transform(value);
+    value = transform(value)
 
-    return value;
-  };
-})(someValue, someFunction);
+    return value
+  }
+})(someValue, someFunction)
 
 // How would you use myModule?
 ```
@@ -93,18 +93,18 @@ access to the `value` variable even after being exported.
 Here, we will build an inline module like the following step-by-step:
 
 ```js
-const myModule = (function(arg, transform) {
+const myModule = (function (arg, transform) {
   // secret internals
-  const value = arg;
+  let value = arg
 
   // exports
-  return function() {
+  return function () {
     // has access to secret internals!
-    value = transform(value);
+    value = transform(value)
 
-    return value;
-  };
-})(something);
+    return value
+  }
+})(something)
 ```
 
 ### Checkpoint 0
