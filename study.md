@@ -107,7 +107,7 @@ CommonJS and ES modules and answer the questions below:
 1. What are the main differences between using CommonJS and ES6 module syntax?
 
 ```md
-<!-- your answer here -->
+
 ```
 
 2. Discuss in what situations you might want to use CommonJS vs ES Modules
@@ -183,3 +183,8 @@ having the changed module in other files that use it.
 
 Open a pull request with your response. It should include this file and your
 commits from the Exploring Modules lab (at least one commit).
+
+## Additional resources: 
+
+- [NodeJS, TC-39, and modules](https://hackernoon.com/node-js-tc-39-and-modules-a1118aecf95e)
+- [Everything You Need To Know About Requiring Node Modules](https://medium.freecodecamp.org/requiring-modules-in-node-js-everything-you-need-to-know-e7fbd119be8)
