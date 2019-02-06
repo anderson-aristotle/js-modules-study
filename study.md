@@ -62,7 +62,7 @@ const myModule = ModuleFactory(someArgs)
 
 ### IIFEs
 
-> An IFFE (pronounced "iffy") is an Immediately Invoked Function Expression.
+> An IIFE (pronounced "iffy") is an Immediately Invoked Function Expression.
 A undressed, unembellished, inline module:
 
 ```js
@@ -88,69 +88,57 @@ is a function in this case. It can just as easily be an array or an object
 with many properties. Note that the function we built inside the module has
 access to the `value` variable even after being exported.
 
-## Lab: Exploring Inline Modules in JavaScript
+## Modern Modules
 
-Here, we will build an inline module like the following step-by-step:
+There are still some use-cases for IIFEs, however there are other ways to
+implement modules these days. This mostly refers to the ways that we can
+`import` and `export` modules with special syntax.
 
-```js
-const myModule = (function (arg, transform) {
-  // secret internals
-  let value = arg
+ECMAscript standardized `import`ing and `export`ing modules in the browser,
+however CommonJS syntax is also very common.
 
-  // exports
-  return function () {
-    // has access to secret internals!
-    value = transform(value)
+Read the following articles to learn more about the differences between
+CommonJS and ES modules and answer the questions below:
 
-    return value
-  }
-})(something)
+- [NodeJS Modules](https://medium.com/the-node-js-collection/an-update-on-es6-modules-in-node-js-42c958b890c)
+- [ES Modules](https://flaviocopes.com/es-modules/)
+- [Require vs Import](http://researchhubs.com/post/computing/javascript/nodejs-require-vs-es6-import-export.html)
+
+1. What are the main differences between using CommonJS and ES6 module syntax?
+
+```md
+<!-- your answer here -->
 ```
 
-### Checkpoint 0
+2. Discuss in what situations you might want to use CommonJS vs ES Modules
 
-1.  Create a branch `checkpoint0` and checkout to it.
-1.  Open [`lib/inline.js`](lib/inline.js).
-1.  Read the code in detail and write a comment with what you expect the result
-    of running the script to be.
-1.  Run the script with `node lib/inline.js`.
-1.  Alter `incrementX` to create a more interesting module.
-1.  Leave the statements toward the end of the document as-is or alter them to
-    do something more interesting.
-1.  Run the script again and see if you get what you expected.
-1.  Commit your changes and checkout to `master`.
+```md
+<!-- your answer here -->
+```
 
-### Checkpoint 1
+### `import` & `export` vs `module.exports` & `require`
 
-1.  Checkout to a new branch, `IFFE`.
-1.  Open [`lib/inline.js`](lib/inline.js).
-1.  Put a pair of parens (`(` and `)`) around the function assigned to
-    `incrementX`.
+```js
+// lib/module.js
+export default num => return num++
 
-    Recall that the function expression begins with the keyword `function` and
-    ends with the closing curly brace (`}`) following the function body. Your
-    opening paren belongs before the letter 'f' in `function` and your closing
-    paren belongs after `}`.
-1.  Run the script again. Observe that this makes no actual change in what the
-    code does. Surrounding a value with parens does nothing to change it.
-1.  Commit this change.
+// app.js
+import increment from './lib/module.js'
+console.log(increment(5))
+```
 
-### Checkpoint 2
+vs
 
-Since we named our function `incrementX`, we know that the `incrementX` being
-called where we define countFromZero is the same function, right? We can replace the invocation of incrementX with the actual function expression and it'll be the same, won't it?
+```js
+// lib/module.js
+const increment = num => return num++
+module.exports = increment
 
-1.  Copy the function expression that is being assigned to `incrementX`, including the surrounding parens you just added.
-1.  Now where we declare `countFromZero`, instead of invoking `incrementX`, paste in the function expression from the last step.
-1.  Remove the declaration of `incrementX` from the lines above our declaration
-    of `countFromZero`.  Your module should now look like the `myModule` above.
-1.  Run the script again and observe any difference in the result.
-1.  Commit this change. Include a comment with your observations in the commit
-    message.
 
-### Checkpoint 3
-
-Compare the code you've created and compare it to the code on the master branch.
+// app.js
+const increment = require('./lib/module.js')
+console.log(increment('hi'))
+```
 
 ## Lab: Exploring Modules in Node (CommonJS Standard)
 
@@ -173,8 +161,8 @@ Initially, your module will have two names for one object: `module.exports` and
 `exports`. By convention, and for practical reasons, exporting is done one of
 two ways:
 
-1.  Assigning properties to `exports`: `exports.property = value;`
-1.  Overwriting `module.exports`: `module.exports = {}`
+1. Assigning properties to `exports`: `exports.property = value;`
+1. Overwriting `module.exports`: `module.exports = {}`
 
 The reasons why are detailed in the comments in `common.js`.
 
@@ -193,6 +181,5 @@ having the changed module in other files that use it.
 
 ## Response
 
-Open a pull request with your response. It should include the changes you made
-during checkpoint 2 (two commits) and the Exploring Modules lab (at least one
-commit).
+Open a pull request with your response. It should include this file and your
+commits from the Exploring Modules lab (at least one commit).
