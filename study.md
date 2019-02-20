@@ -184,7 +184,7 @@ having the changed module in other files that use it.
 Open a pull request with your response. It should include this file and your
 commits from the Exploring Modules lab (at least one commit).
 
-## Additional resources: 
+## Additional resources:
 
 - [NodeJS, TC-39, and modules](https://hackernoon.com/node-js-tc-39-and-modules-a1118aecf95e)
 - [Everything You Need To Know About Requiring Node Modules](https://medium.freecodecamp.org/requiring-modules-in-node-js-everything-you-need-to-know-e7fbd119be8)
